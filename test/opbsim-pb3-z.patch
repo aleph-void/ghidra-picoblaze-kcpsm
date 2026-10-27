@@ -1,0 +1,13 @@
+347a348,349
+> var gPb3Z* = false      # Ghidra-Rare patch: on PicoBlaze-3 ADDCY/SUBCY do not chain Z (UG129 and opbasm's documentation)
+> 
+383c385
+<   state.curFlags.z = state.curFlags.z and (state.regs[state.curFlags.activeBank][x] == 0)
+---
+>   state.curFlags.z = (if gPb3Z: (state.regs[state.curFlags.activeBank][x] == 0) else: state.curFlags.z and (state.regs[state.curFlags.activeBank][x] == 0))
+397c399
+<   state.curFlags.z = state.curFlags.z and (state.regs[state.curFlags.activeBank][x] == 0)
+---
+>   state.curFlags.z = (if gPb3Z: (state.regs[state.curFlags.activeBank][x] == 0) else: state.curFlags.z and (state.regs[state.curFlags.activeBank][x] == 0))
+1055a1058
+>   gPb3Z = cmdOpts.usePB3
