@@ -3,9 +3,9 @@
 <compiler_spec>
   <global>
     <range space="rom"/>
+    <range space="scratchpad"/>
   </global>
-  <stackpointer register="SP" space="stack_buffer"/>
-  
+  <stackpointer register="SP" space="stack_buffer" growth="positive"/>
   <default_proto>
     <prototype name="__stdcall" extrapop="0" stackshift="0" strategy="register">
       <input>
